@@ -34,7 +34,7 @@ foreach ($arrayOfWords as $word) {
     $arrayOfReversedWords[] = implode('', $resultArray);
     }
 var_dump($arrayOfReversedWords);
-//
+
 
 
 
