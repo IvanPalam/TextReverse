@@ -1,40 +1,22 @@
 <?php
-/*$string = 'abcd efgh';
-$string = implode(' ', array_reverse(explode(' ', $string)));
-//var_dump (strrev($string));
-print_r (strrev($string)); */
-/*
-$string = 'a1bcd efg!h';
-$string = implode(' ', array_reverse(explode(' ', $string)));
-//var_dump (strrev($string));
-print_r (strrev($string));
-*/
 
-// ЗАДАЧА_____________ a1bcd efg!h -- d1cba hgf!e
+require_once('vendor/autoload.php');
 
-$string = 'a1bcd efg!h';
-$arrayOfWords = (explode(' ', $string));
-$arrayOfReversedWords = [];
-foreach ($arrayOfWords as $word) {
-    $arrayOfCharacters = str_split($word);
-    $alphabeticToArray = [];
-    $specialCharacters = [];
-    foreach ($arrayOfCharacters as $key => $character) {
-        if (ctype_alpha($character)) {
-            $alphabeticToArray[$key] = $character;
-        } else {
-            $specialCharacters[$key] = $character;
-        }
-    }
-    $alphabeticCharaKeys = array_keys($alphabeticToArray);
-    $reversedAlphabeticArray = array_reverse($alphabeticToArray);
-    $resultAlphaArray = array_combine($alphabeticCharaKeys, $reversedAlphabeticArray);
-    $resultArray = $resultAlphaArray + $specialCharacters;
-    ksort($resultArray);
-    $arrayOfReversedWords[] = implode('', $resultArray);
-    }
-var_dump($arrayOfReversedWords);
-echo "git test";
+use Palam\TextReverse\TextReverse;
+
+$textRevers = new TextReverse();
+if  (isset($_GET['string'])) {
+    echo "<h1>" . $_GET ['string'] . "</h1>";
+    echo "<h1>" . $textRevers->reverse($_GET['string']) . "</h1>";
+}
+?>
+<form class="guruweba_example_form" name="feedback" method="GET" action="index.php">
+    <div class="guruweba_example_caption">Text Reverse App</div>
+    </br>
+    <div>Ввод</div>
+    <input type="text" name="string" required="required">
+    <input type="submit" name="submit_btn" value="Отправить">
+</form>
 
 
 
